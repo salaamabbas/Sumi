@@ -115,11 +115,30 @@
             align-items: center;
             justify-content: center;
             z-index: 10000;
-            background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(26, 0, 51, 0.8) 100%), url('pic1.jpg');
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(26, 0, 51, 0.9) 100%);
+            transition: opacity 0.8s, visibility 0.8s;
+        }
+
+        /* Mobile Background Image Fix */
+        #landing::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('pic1.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            transition: opacity 0.8s, visibility 0.8s;
+            opacity: 0.7;
+            z-index: -1;
+        }
+
+        @media (max-width: 768px) {
+            #landing::before {
+                background-attachment: scroll;
+            }
         }
 
         #landing.hidden {
@@ -132,6 +151,7 @@
             text-align: center;
             position: relative;
             padding: 20px;
+            z-index: 2;
         }
 
         .hero::before {
@@ -180,6 +200,7 @@
             margin-bottom: 40px;
             opacity: 0.9;
             letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
         }
 
         .heart-container {
@@ -198,6 +219,7 @@
         .hero p {
             font-size: 1.4em;
             margin-top: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
         }
 
         /* Main Content */
@@ -205,6 +227,9 @@
             opacity: 0;
             visibility: hidden;
             transition: opacity 1s 0.5s;
+            position: relative;
+            z-index: 2;
+            background: rgba(0, 0, 0, 0.85);
         }
 
         #mainContent.visible {
@@ -221,6 +246,15 @@
             padding: 80px 20px;
             position: relative;
             z-index: 2;
+        }
+
+        /* Enhanced Section Backgrounds */
+        section:nth-child(odd) {
+            background: rgba(10, 0, 20, 0.7);
+        }
+
+        section:nth-child(even) {
+            background: rgba(20, 0, 40, 0.7);
         }
 
         /* Button Styles */
@@ -240,6 +274,7 @@
             box-shadow: 0 8px 32px rgba(255, 182, 193, 0.3);
             position: relative;
             overflow: hidden;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         }
 
         .btn::before {
@@ -270,9 +305,9 @@
             z-index: 1;
         }
 
-        /* Content Box */
+        /* Enhanced Content Box */
         .content-box {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(20, 10, 30, 0.85);
             backdrop-filter: blur(30px);
             border-radius: 30px;
             padding: 60px 50px;
@@ -306,9 +341,10 @@
             text-align: center;
             position: relative;
             z-index: 1;
-            background: linear-gradient(45deg, #ffd89b, #19547b);
+            background: linear-gradient(45deg, #ffd89b, #ff9d6c);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(255, 216, 155, 0.3);
         }
 
         .content-box p {
@@ -318,9 +354,10 @@
             text-align: center;
             position: relative;
             z-index: 1;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
         }
 
-        /* Image Sections */
+        /* Enhanced Image Sections */
         .image-section {
             display: flex;
             align-items: center;
@@ -336,13 +373,15 @@
             position: relative;
             overflow: hidden;
             border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
             transition: all 0.5s ease;
+            border: 3px solid rgba(255, 182, 193, 0.3);
         }
 
         .image-container:hover {
             transform: scale(1.05);
             box-shadow: 0 30px 80px rgba(255, 182, 193, 0.6);
+            border-color: rgba(255, 182, 193, 0.6);
         }
 
         .image-container img {
@@ -360,7 +399,11 @@
         .text-content {
             flex: 1;
             min-width: 300px;
-            padding: 20px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 182, 193, 0.2);
         }
 
         .text-content h3 {
@@ -373,17 +416,32 @@
         .text-content p {
             font-size: 1.2em;
             line-height: 1.8;
+            text-align: left;
         }
 
-        /* Memory Cards */
+        /* Enhanced Memory Cards */
         .memory {
             margin: 40px 0;
             padding: 40px;
-            background: linear-gradient(135deg, rgba(255, 182, 193, 0.1), rgba(102, 126, 234, 0.1));
+            background: linear-gradient(135deg, rgba(255, 182, 193, 0.15), rgba(102, 126, 234, 0.15));
             border-left: 5px solid #ffd89b;
             border-radius: 15px;
             backdrop-filter: blur(10px);
             transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 182, 193, 0.1);
+        }
+
+        .memory::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: -1;
         }
 
         .memory:hover {
@@ -395,11 +453,30 @@
             font-size: 2.2em;
             margin-bottom: 20px;
             color: #ffd89b;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
         .memory p {
             font-size: 1.2em;
             line-height: 1.8;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        /* Special Section for pic5 */
+        .special-memory {
+            background: linear-gradient(135deg, rgba(100, 0, 200, 0.2), rgba(200, 0, 100, 0.2));
+            padding: 50px;
+            border-radius: 25px;
+            margin: 60px 0;
+            text-align: center;
+            border: 2px solid rgba(255, 182, 193, 0.3);
+        }
+
+        .special-memory h3 {
+            font-size: 2.8em;
+            color: #ff9d6c;
+            margin-bottom: 30px;
+            text-shadow: 0 0 25px rgba(255, 157, 108, 0.5);
         }
 
         /* Countdown */
@@ -427,9 +504,11 @@
             font-size: 1.5em;
             color: #ffd89b;
             padding: 20px;
-            background: rgba(255, 217, 155, 0.1);
+            background: rgba(255, 217, 155, 0.15);
             border-radius: 15px;
             display: inline-block;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255, 217, 155, 0.2);
         }
 
         /* Scroll Indicator */
@@ -457,14 +536,19 @@
             content: '↓';
             font-size: 2em;
             color: rgba(255, 182, 193, 0.8);
+            text-shadow: 0 0 10px rgba(255, 182, 193, 0.5);
         }
 
         /* Responsive */
         @media (max-width: 768px) {
             .hero h1 { font-size: 3em; }
-            .content-box { padding: 40px 30px; }
+            .hero .subtitle { font-size: 1.4em; }
+            .content-box { padding: 40px 25px; }
             .image-section { flex-direction: column; }
             .btn { padding: 15px 35px; font-size: 1.1em; }
+            .text-content h3 { font-size: 2em; }
+            .memory h3 { font-size: 1.8em; }
+            .content-box h2 { font-size: 2.5em; }
         }
     </style>
 </head>
@@ -560,6 +644,28 @@
             </div>
         </section>
 
+        <!-- New Section with pic5 -->
+        <section>
+            <div class="content-box" style="max-width: 1000px;">
+                <div class="special-memory">
+                    <h3>💖 Our Special Moments</h3>
+                    <div class="image-section" style="margin: 40px 0;">
+                        <div class="image-container" style="min-width: 350px;">
+                            <img src="pic5.jpg" alt="Our special memory">
+                        </div>
+                        <div class="text-content">
+                            <p style="font-size: 1.4em; color: #ffd89b; margin-bottom: 20px;">
+                                Every moment with you feels like a beautiful dream. Whether we're talking for hours or just enjoying the silence together, it's perfect because it's with you.
+                            </p>
+                            <p style="font-size: 1.2em;">
+                                This picture captures one of those perfect moments - just you, me, and our happiness. You make everything better just by being there.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Section 4: Funny Moment -->
         <section>
             <div class="content-box">
@@ -578,7 +684,9 @@
                 <p>Sumaya, you mean everything to me. Everything. You're not just my girlfriend, you're my best friend, my comfort, my peace, my joy. You're the person I want to share every moment with.</p>
                 <p>Your religious dedication inspires me every day, mashAllah. The way you carry yourself with such grace and faith makes me want to be a better Muslim, a better person.</p>
                 <p>I love how you're an introvert but you chose to let me in. I love your stubborn streak (even when it drives me crazy 😅). I love your laugh, your smile, your kind heart.</p>
-                <p style="font-size: 1.6em; color: #ffd89b; margin-top: 30px;">I just love YOU MAMA - all of you, exactly as you are.</p>
+                <p style="font-size: 1.6em; color: #ffd89b; margin-top: 30px; text-shadow: 0 0 15px rgba(255, 216, 155, 0.5);">
+                    I just love YOU MAMA - all of you, exactly as you are.
+                </p>
             </div>
         </section>
 
@@ -588,8 +696,12 @@
                 <div class="countdown">
                     <h3>Looking Forward to Our Future 💍</h3>
                     <p class="countdown-text">InshAllah, before Ramadhan, we'll have our Nikah</p>
-                    <p style="margin-top: 40px; font-size: 1.3em;">I can't wait to start our journey together as husband and wife. To build a life with you, to grow with you, to worship Allah together, to create a beautiful family together.</p>
-                    <p style="margin-top: 30px; font-size: 1.4em; color: #ffd89b;">You're going to be my wife, Sumaya. My WIFE. Alhamdulillah. I'm the luckiest man in the world.</p>
+                    <p style="margin-top: 40px; font-size: 1.3em; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
+                        I can't wait to start our journey together as husband and wife. To build a life with you, to grow with you, to worship Allah together, to create a beautiful family together.
+                    </p>
+                    <p style="margin-top: 30px; font-size: 1.4em; color: #ffd89b; text-shadow: 0 0 15px rgba(255, 216, 155, 0.5);">
+                        You're going to be my wife, Sumaya. My WIFE. Alhamdulillah. I'm the luckiest man in the world.
+                    </p>
                     <button class="btn" onclick="scrollToFinal()" style="margin-top: 40px;">
                         <span>Read My Final Message 💌</span>
                     </button>
@@ -599,12 +711,16 @@
 
         <!-- Section 7: Final Message -->
         <section id="finalSection">
-            <div class="content-box">
+            <div class="content-box" style="background: rgba(30, 0, 60, 0.9);">
                 <div style="text-align: center; font-size: 1.4em; line-height: 2;">
                     <p>Sumaya Nassanga, I love you so much. More than words can ever express. You are my today and all of my tomorrows. You are my dunya and I pray you'll be my companion in Jannah too.</p>
                     <p style="margin-top: 40px;">Thank you for choosing me. Thank you for your patience, your love, your beautiful soul. Thank you for seeing something in me worth loving. Thank you for just being you.</p>
-                    <p style="margin-top: 50px; font-size: 1.8em; color: #ffd89b; text-shadow: 0 0 30px rgba(255, 217, 155, 0.5);">I love you, my beautiful Sumaya ❤️ Nkwaagala nnyo kamaama </p>
-                    <p style="margin-top: 50px; font-size: 2em; font-style: italic; color: #ffd89b;">Forever and always yours,<br>Salaam 💫</p>
+                    <p style="margin-top: 50px; font-size: 1.8em; color: #ffd89b; text-shadow: 0 0 30px rgba(255, 217, 155, 0.5); padding: 20px; background: rgba(255, 217, 155, 0.1); border-radius: 15px;">
+                        I love you, my beautiful Sumaya ❤️ Nkwaagala nnyo kamaama
+                    </p>
+                    <p style="margin-top: 50px; font-size: 2em; font-style: italic; color: #ffd89b; text-shadow: 0 0 20px rgba(255, 217, 155, 0.5);">
+                        Forever and always yours,<br>Salaam 💫
+                    </p>
                 </div>
             </div>
         </section>
@@ -666,6 +782,9 @@
             setTimeout(() => {
                 mainContent.classList.add('visible');
                 scrollIndicator.classList.add('visible');
+                
+                // Scroll to top of main content
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             }, 800);
         }
 
@@ -677,10 +796,21 @@
         }
 
         // Hide scroll indicator when scrolling
+        let scrollTimeout;
         window.addEventListener('scroll', () => {
             if (window.scrollY > 200) {
                 scrollIndicator.style.opacity = '0';
+            } else {
+                scrollIndicator.style.opacity = '1';
             }
+            
+            // Clear timeout and reset
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                if (window.scrollY > 200) {
+                    scrollIndicator.style.opacity = '0';
+                }
+            }, 1500);
         });
     </script>
 </body>
